@@ -1,15 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:stocks/controllers/data_controller.dart';
 import 'package:stocks/utils/app_colors.dart';
 import 'package:stocks/widgets/balance_display.dart';
 import 'package:stocks/widgets/custom_app_bar.dart';
 import 'package:stocks/widgets/line_chart.dart';
 import 'package:stocks/widgets/transaction_button.dart';
 import 'package:stocks/widgets/transactions.dart';
+import 'package:get/get.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final DataController _controller = Get.put(DataController());
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.getStockPrices();
+  }
 
   @override
   Widget build(BuildContext context) {

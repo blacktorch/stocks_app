@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:dio/dio.dart';
@@ -63,24 +62,7 @@ class TransactionButtonRow extends StatelessWidget {
             child: TransactionButton(
               icon: Icons.arrow_upward_rounded,
               title: "Send",
-              onTap: () async {
-                final dio = Dio();
-                dio.options.baseUrl = "https://www.alphavantage.co";
-                Response response;
-                response = await dio.get(
-                  "/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=VRPSSNJICLSJMM08",
-                );
-                //print(response.data.toString());
-
-                AlphaVantageDailyResponse data =
-                    AlphaVantageDailyResponse.fromJson(response.data);
-                print(data.meta.information);
-                print(data.meta.symbol);
-                var open = data.bars.where((e) => e.open < 300);
-                for (int i = 0; i < open.length; ++i) {
-                  print(open.elementAt(i).open);
-                }
-              },
+              onTap: () {},
             ),
           ),
           Expanded(

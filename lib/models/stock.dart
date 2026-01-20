@@ -91,4 +91,15 @@ class AlphaVantageDailyResponse {
       AlphaVantageDailyResponse.fromJson(
         jsonDecode(raw) as Map<String, dynamic>,
       );
+
+  static AlphaVantageDailyResponse fromEmpty() => AlphaVantageDailyResponse(
+    meta: MetaData(
+      information: '',
+      symbol: '',
+      lastRefreshed: DateTime.now(),
+      outputSize: '',
+      timeZone: '',
+    ),
+    bars: [],
+  );
 }
